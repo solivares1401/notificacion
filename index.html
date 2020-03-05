@@ -1,0 +1,41 @@
+﻿<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale = 1.0, maximum-scale = 1.0, user-scalable = no, width = device-width">
+	<title>Tu clase, tu país</title>
+
+</head>
+
+<body>
+
+	<button type="button" onclick="notificar()">Enviar una notificacion</button>
+
+	<script type="text/javascript">
+		document.addEventListener("DOMContentLoaded", function () {
+			if (!Notificacion) {
+				alert("Las notificaciones esta bloqueadas")
+				return
+			}
+
+			if (Notificacion.permission !== "granted") {
+				Notificacion.requestPermission();
+			}
+
+			Notification.requestPermission();
+
+		});
+
+		notificar=()=> {
+			var notificacion = new Notification("Notificacion de prueba", {
+				body: "Esta notificación fue enviada desde la aplicación",
+				vibrate: [200, 100, 200]
+			});
+			notificacion.vibrate;		
+		}
+
+	</script>
+</body>
+
+</html>
